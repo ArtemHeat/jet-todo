@@ -7,3 +7,9 @@ html {
 *::before {
   box-sizing: inherit;
 }
+
+.list,
+.radio-container {
+  display: inline-block;
+  vertical-align: top;
+}
