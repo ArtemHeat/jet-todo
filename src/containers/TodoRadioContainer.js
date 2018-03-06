@@ -7,27 +7,9 @@ export default class TodoRadioContainer extends React.Component {
     super(props);
   }
 
-  /*onAddNewTodo = () => {
-    if (this.state.newTodoType && this.state.newTodoText) {
-      const newTodo = {
-        text: this.state.newTodoText,
-        type: this.state.newTodoType,
-      };
-      const onAddTodo = this.props.onAddTodo;
-      this.setState(
-        {
-          newTodoText: undefined,
-        },
-        () => onAddTodo(newTodo),
-      );
-    }
-  };*/
-
   render() {
     const priority=this.props.priority;
     const onChangeRadio=this.props.onChangeRadio;
-    /*const newTodoText = this.state.newTodoText;
-    const newTodoType = this.state.newTodoType;*/
     return (
       <form>
         <b>Показывать с приоритетом</b>

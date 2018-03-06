@@ -32,8 +32,15 @@ export default class TodoListItem extends React.Component {
     });
   };
 
+  onDeleteTodoHandler = () => {
+    const index = this.props.index;
+    const onDeleteTodo = this.props.onDeleteTodo;
+    onDeleteTodo(index);
+  };
+
   renderView() {
     const todo = this.props.todo;
+    
     return (
       <div>
         <strong>{todo.type}</strong>
@@ -41,7 +48,9 @@ export default class TodoListItem extends React.Component {
         <Button onClick={() => this.setState({ isEditable: true })}>
           Изменить
         </Button>
-        <Button>Удалить</Button>
+        <Button onClick={this.onDeleteTodoHandler}>
+          Удалить
+        </Button>
       </div>
     );
   }

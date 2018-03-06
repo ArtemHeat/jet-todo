@@ -10,7 +10,7 @@ export default function Radio(props) {
       name="priority"
       type="radio"
       value={value}
-      checked={value === priority}
+      checked={value===priority}
       onChange={e => onChangeRadio(e.target)}
     />
   );
