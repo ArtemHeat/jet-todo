@@ -8,24 +8,24 @@ export default class TodoApp extends React.Component {
     super(props);
     this.state = {
       todos: [],
-      priority: 'high'
+      isHighPriorityFirst: true
     };
   }
 
   onAddTodo = todo => {
     const todos = this.state.todos;
-    const priority = this.state.priority;
+    const isHighPriorityFirst = this.state.isHighPriorityFirst;
     this.setState({
-      todos: [...todos, todo].sort(this.sortByPriority(priority))
+      todos: [...todos, todo].sort(this.sortByPriority(isHighPriorityFirst))
     });
   };
 
   onChangeTodo = (todo, index) => {
     const todos = this.state.todos;
-    const priority = this.state.priority;
+    const isHighPriorityFirst = this.state.isHighPriorityFirst;
     todos[index] = todo;
     this.setState({
-      todos: todos.sort(this.sortByPriority(priority))
+      todos: todos.sort(this.sortByPriority(isHighPriorityFirst))
     });
   };
 
@@ -37,43 +37,28 @@ export default class TodoApp extends React.Component {
     });
   };
 
-  sortByPriority = (priorityLevel) => {
-    if (priorityLevel === 'high') {
-      return (a, b) => {
-        if(a.type > b.type) {
-          return 1;
-        }
-
-        if(a.type < b.type) {
-          return -1;
-        }
-      }
+  sortByPriority = isDescending => (a, b) => {
+    if(a.type > b.type) {
+      return isDescending ? -1 : 1;
     }
 
-    if (priorityLevel === 'medium') {
-      return (a, b) => {
-        if(a.type > b.type) {
-          return -1;
-        }
-
-        if(a.type < b.type) {
-          return 1;
-        }
-      }
+    if(a.type < b.type) {
+      return isDescending ? 1 : -1;
     }
   };
 
-  onChangeRadio = (radioBtn) => {
-    const todos = this.state.todos;    
+  onChangeRadio = () => {
+    const todos = this.state.todos;
+    const isHighPriorityFirst = this.state.isHighPriorityFirst;
     this.setState({
-      todos: todos.sort(this.sortByPriority(radioBtn.value)),
-      priority: radioBtn.value
+      todos: todos.sort(this.sortByPriority(!isHighPriorityFirst)),
+      isHighPriorityFirst: !isHighPriorityFirst
     });
   };
 
   render() {
     const todos = this.state.todos;
-    const priority = this.state.priority;
+    const isHighPriorityFirst = this.state.isHighPriorityFirst;
     return (
       <div>
         <TodoAppHeader onAddTodo={this.onAddTodo} />
@@ -82,7 +67,7 @@ export default class TodoApp extends React.Component {
         </div>
         <div className="radio-container">
           <TodoRadioContainer
-          priority={priority}
+          isHighPriorityFirst={isHighPriorityFirst}
           onChangeRadio={this.onChangeRadio}
           />
         </div>

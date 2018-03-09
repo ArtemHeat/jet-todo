@@ -40,10 +40,14 @@ export default class TodoListItem extends React.Component {
 
   renderView() {
     const todo = this.props.todo;
-    
+    const priority = {
+      '3-high': 'Высокий',
+      '2-medium': 'Средний',
+      '1-low': 'Низкий'
+    };
     return (
       <div>
-        <strong>{todo.type}</strong>
+        <strong>{priority[todo.type]}</strong>
         <span>{todo.text}</span>
         <Button onClick={() => this.setState({ isEditable: true })}>
           Изменить

@@ -1,12 +1,16 @@
 const types = [
   {
     label: 'Высокий',
-    value: 'high',
+    value: '3-high',
   },
   {
-    label: 'средний',
-    value: 'medium',
+    label: 'Средний',
+    value: '2-medium',
   },
+  {
+    label: 'Низкий',
+    value: '1-low',
+  }
 ];
 
 export default types;

@@ -8,13 +8,13 @@ export default class TodoRadioContainer extends React.Component {
   }
 
   render() {
-    const priority=this.props.priority;
+    const isHighPriorityFirst = this.props.isHighPriorityFirst;
     const onChangeRadio=this.props.onChangeRadio;
     return (
       <form>
         <b>Показывать с приоритетом</b>
-        <p>Высокий<Radio value="high" priority={priority} onChangeRadio={onChangeRadio} /></p>
-        <p>Средний<Radio value="medium" priority={priority} onChangeRadio={onChangeRadio} /></p>
+        <p>Высокий<Radio value="high" isHighPriorityFirst={isHighPriorityFirst} onChangeRadio={onChangeRadio} /></p>
+        <p>Низкий<Radio value="low" isHighPriorityFirst={!isHighPriorityFirst} onChangeRadio={onChangeRadio} /></p>
       </form>
     );
   }

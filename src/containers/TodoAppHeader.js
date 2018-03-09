@@ -9,7 +9,7 @@ export default class TodoAppHeader extends React.Component {
     super(props);
     this.state = {
       newTodoText: undefined,
-      newTodoType: 'high',
+      newTodoType: '3-high',
     };
   }
 

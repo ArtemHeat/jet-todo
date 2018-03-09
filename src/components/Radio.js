@@ -3,15 +3,15 @@ import React from 'react';
 export default function Radio(props) {
   const onChangeRadio = props.onChangeRadio;
   const value = props.value;
-  const priority = props.priority;
+  const isHighPriorityFirst = props.isHighPriorityFirst;
 
   return (
     <input
       name="priority"
       type="radio"
       value={value}
-      checked={value===priority}
-      onChange={e => onChangeRadio(e.target)}
+      checked={isHighPriorityFirst}
+      onChange={() => onChangeRadio()}
     />
   );
 }
